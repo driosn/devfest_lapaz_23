@@ -8,6 +8,12 @@ class DevFest23Colors {
   static const green = Color(0xff34a853);
   static const yellow = Color(0xfff9ab00);
   static const red = Color(0xffea4335);
+  static const primaries = [
+    blue,
+    green,
+    yellow,
+    red,
+  ];
 
   //
   // Light
