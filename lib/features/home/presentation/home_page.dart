@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Text(
           'Home Page',
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
       ),
     );
