@@ -19,15 +19,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         textTheme: GoogleFonts.openSansTextTheme(textTheme).copyWith(
-          bodyLarge: GoogleFonts.robotoMono(
-            textStyle: textTheme.bodyLarge,
-          ),
-          bodyMedium: GoogleFonts.robotoMono(
-            textStyle: textTheme.bodyMedium,
-          ),
-          bodySmall: GoogleFonts.robotoMono(
-            textStyle: textTheme.bodySmall,
-          ),
           labelLarge: GoogleFonts.robotoMono(
             textStyle: textTheme.labelLarge,
           ),

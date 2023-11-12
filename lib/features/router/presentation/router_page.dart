@@ -1,6 +1,7 @@
 import 'package:devfest23/features/activities/presentation/activities_page.dart';
 import 'package:devfest23/features/agenda/presentation/agenda_page.dart';
 import 'package:devfest23/features/home/presentation/home_page.dart';
+import 'package:devfest23/features/speakers/presentation/speakers_page.dart';
 import 'package:devfest23/shared/style/devfest23_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,8 @@ class _RouterPageState extends State<RouterPage> {
     destinations = const [
       _Destination(0, 'Inicio', Icon(Icons.home)),
       _Destination(1, 'Agenda', Icon(Icons.notes)),
-      _Destination(2, 'Actividades', Icon(Icons.local_activity))
+      _Destination(2, 'Speakers', Icon(Icons.people)),
+      _Destination(3, 'Actividades', Icon(Icons.local_activity))
     ];
     selectedDestinationNotifier = ValueNotifier(destinations.first);
   }
@@ -46,19 +48,24 @@ class _RouterPageState extends State<RouterPage> {
         toolbarHeight: isDesktop ? 200 : 120,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
-          child: NavigationBar(
-            onDestinationSelected: (index) {
-              print('Index: $index');
-              selectedDestinationNotifier.value = destinations[index];
+          child: ValueListenableBuilder<_Destination>(
+            valueListenable: selectedDestinationNotifier,
+            builder: (context, destination, child) {
+              return NavigationBar(
+                onDestinationSelected: (index) {
+                  selectedDestinationNotifier.value = destinations[index];
+                },
+                selectedIndex: destination.index,
+                destinations: destinations
+                    .map(
+                      (destination) => NavigationDestination(
+                        icon: destination.icon,
+                        label: destination.title,
+                      ),
+                    )
+                    .toList(),
+              );
             },
-            destinations: destinations
-                .map(
-                  (destination) => NavigationDestination(
-                    icon: destination.icon,
-                    label: destination.title,
-                  ),
-                )
-                .toList(),
           ),
         ),
       ),
@@ -70,6 +77,7 @@ class _RouterPageState extends State<RouterPage> {
             children: const [
               HomePage(),
               AgendaPage(),
+              SpeakersPage(),
               ActivitiesPage(),
             ],
           );
