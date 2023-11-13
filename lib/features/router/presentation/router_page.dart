@@ -27,7 +27,7 @@ class _RouterPageState extends State<RouterPage> {
       _Destination(2, 'Speakers', Icon(Icons.people)),
       _Destination(3, 'Actividades', Icon(Icons.local_activity))
     ];
-    selectedDestinationNotifier = ValueNotifier(destinations.first);
+    selectedDestinationNotifier = ValueNotifier(destinations[2]);
   }
 
   @override
